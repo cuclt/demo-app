@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DemoApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <div id="top">
+  <%= render "layouts/header" %>
+  </div>
 
-<%= yield %>
+  <!-- *** TOP BAR END *** -->
 
+  <!-- *** NAVBAR END *** -->
+  <div id="all">
+
+    <%= yield %>
+
+    <%= render "layouts/footer" %>
+  </div>
 </body>
 </html>
