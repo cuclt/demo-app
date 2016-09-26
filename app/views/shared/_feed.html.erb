@@ -8,7 +8,7 @@
       <hr>
       <p class="date-comments">
         <a href="#"><i class="fa fa-calendar-o"></i> Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</a>
-        <a href="#"><i class="fa fa-comment-o"></i> Comments</a>
+        <a href="#"><i class="fa fa-comment-o"></i><%= feed_item.comments.count %> Comments</a>
         <% if current_user?(feed_item.user) %>
           <%= link_to "Delete", feed_item, method: :delete, data: {confirm: t("confirm_action")}, class: "text-danger" %>
         <% end %>
@@ -16,8 +16,8 @@
       <div class="image">
         <%= image_tag feed_item.picture.url if feed_item.picture? %>
       </div>
-      <p class="intro"><%= feed_item.content %></p>
-      <p class="read-more"><a href="#" class="btn btn-primary">Continue reading</a> </p>
+      <p class="intro"><%= feed_item.content.truncate(500) %></p>
+      <p class="read-more"><%= link_to "Continue reading", feed_item, class: "btn btn-primary" %></p>
     </div>
   <% end %>
   <%= will_paginate @feed_items %>

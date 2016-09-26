@@ -1745,4 +1745,8 @@ ul.users li a{
 .intro {
   text-align: justify !important;
 }
+.comment {
+  float: left;
+  padding: 0 15px;
+}
 

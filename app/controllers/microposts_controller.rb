@@ -13,6 +13,11 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show
+    @micropost = Micropost.find params[:id]
+    @comments = @micropost.comments.limit(10)
+  end
+
   def destroy
   end
 

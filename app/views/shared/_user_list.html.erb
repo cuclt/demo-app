@@ -2,7 +2,7 @@
   <% @users.each do |user| %>
     <li>
       <%= gravatar_for user, size: 50 %><br>
-      <%= link_to user.name, user %>
+      <%= link_to user.name.truncate(15), user %>
     </li>
   <% end %>
 </ul>

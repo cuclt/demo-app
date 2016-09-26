@@ -19,3 +19,10 @@ users = User.order(:created_at).take(6)
   content = Faker::Lorem.sentence(150)
   users.each {|user| user.microposts.create!(title: title, content: content)}
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+  micropost_id = Random.rand(20)
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.comments.create!(content: content, micropost_id: micropost_id) }
+end
