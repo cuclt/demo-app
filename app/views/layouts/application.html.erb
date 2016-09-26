@@ -11,15 +11,19 @@
   <div id="top">
   <%= render "layouts/header" %>
   </div>
-
-  <!-- *** TOP BAR END *** -->
-
-  <!-- *** NAVBAR END *** -->
   <div id="all">
-
-    <%= yield %>
-
+    <div id="content">
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /#content -->
     <%= render "layouts/footer" %>
+    <%= debug(params) if Rails.env.development? %>
   </div>
 </body>
 </html>

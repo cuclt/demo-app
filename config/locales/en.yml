@@ -21,3 +21,17 @@
 
 en:
   hello: "Hello world"
+  title: "BlogSports"
+  copy: "2016"
+  website: "Website"
+  signin: "Sign in"
+  signup: "Sign up"
+  now: "now"
+  name: "Full Name"
+  email: "Email"
+  password: "Password"
+  password_confirm: "Password Confirm"
+  or: "or"
+  forgot_password: "Forgot Password?"
+  home: "Home"
+  list_blog: "Blog listing"

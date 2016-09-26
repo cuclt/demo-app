@@ -3,21 +3,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title text-center" id="Login">Login</h4>
+        <h4 class="modal-title text-center" id="Login"><%= t "signin" %></h4>
       </div>
       <div class="modal-body">
         <form action="#" method="post">
           <div class="form-group">
-            <input type="text" class="form-control" id="email-modal" placeholder="Email">
+            <input type="text" class="form-control" id="email-modal" placeholder=<%= t "email" %>>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="password-modal" placeholder="Password">
+            <input type="password" class="form-control" id="password-modal" placeholder=<%= t "password" %>>
           </div>
           <p class="text-center">
-            <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+            <button class="btn btn-primary"><i class="fa fa-sign-in"></i><%= t "signin" %></button>
           </p>
         </form>
-        <p class="text-center text-muted"><a href="#">Register now</a> or <a href="#"> Forgot password?</a></p>
+        <p class="text-center text-muted"><a href="#"><%= t "signup now" %></a> <%= t "or" %> <a href="#"> <%= t "forgot_password" %></a></p>
       </div>
     </div>
   </div>
