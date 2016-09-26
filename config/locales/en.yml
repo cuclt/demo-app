@@ -38,3 +38,7 @@ en:
   new_account: "New account"
   create_account: "Create my account"
   account: "Account"
+  edit_account: "Edit Account"
+  edit_account: "Edit my account"
+  users: "Users"
+  confirm_action: "You sure?"

@@ -1,0 +1,45 @@
+<% provide(:title, t("edit_account")) %>
+<div class="col-md-12">
+  <ul class="breadcrumb">
+      <li><a href="#"><%= t "home" %></a>
+      </li>
+      <li><%= t "edit_account" %></li>
+  </ul>
+</div>
+<div class="col-md-12">
+  <div class="box">
+    <div class="row">
+      <h1 class="text-center"><%= t "edit_account" %></h1>
+      <hr>
+      <div class="col-md-5">
+        <div class="gravatar_edit form-group">
+          <%= gravatar_for @user %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= form_for(@user) do |f| %>
+        <%= render "shared/error_messages" %>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control", id: "name" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control", id: "email"  %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control", id: "password"  %>
+          </div>
+          <div class="form-group">
+             <%= f.label :password_confirmation, "Confirmation" %>
+             <%= f.password_field :password_confirmation, class: "form-control", id: "password_confirmation"  %>
+          </div>
+          <div class="text-center">
+            <%= f.submit t("edit_account"), class: "btn btn-primary fa fa-user-md" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
