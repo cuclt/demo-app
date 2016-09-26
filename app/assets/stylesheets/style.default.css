@@ -43,6 +43,10 @@ h1 {
   }
 }
 #top a {
+  color: green;
+}
+#top a:hover {
+  text-decoration: none;
   color: #fff;
 }
 #top ul.menu {
@@ -1444,6 +1448,7 @@ fieldset[disabled] .btn-primary.active {
 /* dropdowns */
 .dropdown-menu > li > a {
   padding: 5px 20px;
+  color: #333 !important;
 }
 /* forms.less */
 label {
@@ -1705,4 +1710,8 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+.checkbox {
+  padding-left: 20px !important;
 }

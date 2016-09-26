@@ -6,18 +6,24 @@
         <h4 class="modal-title text-center" id="Login"><%= t "signin" %></h4>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
+        <%= form_for(:session, url: login_path) do |f| %>
           <div class="form-group">
-            <input type="text" class="form-control" id="email-modal" placeholder=<%= t "email" %>>
+             <%= f.email_field :email, class: "form-control", placeholder: t("email")  %>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="password-modal" placeholder=<%= t "password" %>>
+            <%= f.password_field :password, class: "form-control", placeholder: t("password") %>
+          </div>
+          <div class="form-group">
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+              <%= f.check_box :remember_me %>
+              <span>Remember me</span>
+            <% end %>
           </div>
           <p class="text-center">
-            <button class="btn btn-primary"><i class="fa fa-sign-in"></i><%= t "signin" %></button>
+            <%= f.submit t("signin"), class: "btn btn-primary" %>
           </p>
-        </form>
-        <p class="text-center text-muted"><a href="#"><%= t "signup now" %></a> <%= t "or" %> <a href="#"> <%= t "forgot_password" %></a></p>
+        <% end %>
+        <p class="text-center text-muted"><%= link_to t("signup now"), signup_path %> <%= t "or" %> <%= link_to t("forgot_password") %></p>
       </div>
     </div>
   </div>
