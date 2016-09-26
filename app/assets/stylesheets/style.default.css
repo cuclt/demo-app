@@ -1739,4 +1739,10 @@ ul.users li a{
   width: 100px;
   height: 100px;
 }
+.user_info {
+  margin-bottom: 20px;
+}
+.intro {
+  text-align: justify !important;
+}
 

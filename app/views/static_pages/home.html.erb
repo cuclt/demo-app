@@ -1,32 +1,59 @@
 <% provide(:title, "BlogSports") %>
-<!-- *** TOPBAR *** -->
-<div class="col-sm-12">
-  <ul class="breadcrumb">
-    <li>
-      <a href="#"><%= t "home" %></a>
-    </li>
-    <li><%= t "list_blog" %></li>
-  </ul>
-</div>
-<div class="col-md-4">
-  <!-- *** BLOG MENU *** -->
-  <div class="panel panel-default sidebar-menu">
-    <div class="panel-heading">
-       <h3 class="panel-title"><%= t "users" %></h3>
-    </div>
-    <div class="panel-body">
-      <ul class="nav nav-pills nav-stacked users">
-        <% @users.each do |user| %>
-          <li>
-            <%= gravatar_for user, size: 50 %><br>
-            <%= link_to user.name, user %>
-            <% if current_user && current_user.admin? && !current_user?(user) %>
-              <br><br><%= link_to "delete", user, method: :delete, data: { confirm: t("confirm_action") }, class: "text-danger" %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-      <%= will_paginate @users%>
+ <!-- *** TOPBAR *** -->
+  <div class="col-sm-12">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to t("home"), root_path %></a>
+      </li>
+      <li><%= t "list_blog" %></li>
+    </ul>
+  </div>
+  <!-- *** LEFT COLUMN *** -->
+<% if logged_in? %>
+  <div class="col-md-4">
+    <section class="user_info">
+      <%= render "shared/user_info" %>
+    </section>
+    <section class="micropost_form">
+      <%= render "shared/micropost_form" %>
+    </section>
+  </div>
+  <div class="col-md-4 col-md-offset-4" id="blog-listing">
+    <%= render "shared/user_list" %>
+  </div>
+<% else %>
+  <div class="col-md-4">
+    <!-- *** BLOG MENU *** -->
+    <div class="panel panel-default sidebar-menu">
+      <div class="panel-heading">
+         <h3 class="panel-title"><%= t "users" %></h3>
+      </div>
+      <div class="panel-body">
+        <%= render "shared/user_list" %>
+      </div>
     </div>
   </div>
-</div>
+  <div class="col-sm-8" id="blog-listing">
+    <% @list_microposts.each do |micropost| %>
+      <div class="post" id="micropost-<%= micropost.id %>">
+        <h2>
+          <%= link_to micropost.title, "#" %>
+        </h2>
+        <p class="author-category">By <%= link_to micropost.user.name, micropost.user %></p>
+        <hr>
+        <p class="date-comments">
+          <a href="#"><i class="fa fa-calendar-o"></i> Posted <%= time_ago_in_words(micropost.created_at) %> ago.</a>
+          <a href="#"><i class="fa fa-comment-o"></i> Comments</a>
+        </p>
+        <div class="image">
+          <%= image_tag micropost.picture.url if micropost.picture? %>
+        </div>
+        <p class="intro"><%= micropost.content %></p>
+        <p class="read-more"><a href="#" class="btn btn-primary">Continue reading</a> </p>
+      </div>
+    <% end %>
+    <%= will_paginate @list_microposts %>
+  </div>
+  <!-- /.col-md-9 -->
+  <!-- *** LEFT COLUMN END *** -->
+<% end %>
